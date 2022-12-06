@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  score_candidat: 1
+  candidat: one
+  resultat_commune: one
+
+two:
+  score_candidat: 1
+  candidat: two
+  resultat_commune: two

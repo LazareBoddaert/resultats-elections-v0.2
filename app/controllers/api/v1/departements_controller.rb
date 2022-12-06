@@ -18,6 +18,6 @@ class Api::V1::DepartementsController < ApplicationController
   private
 
   def departements_params
-    params.require(:departement).permit(:nom, :nom_formate, :numero, :region_id)
+    params.require(:departement).permit(:nom, :nom_formate, :code, :region_id)
   end
 end

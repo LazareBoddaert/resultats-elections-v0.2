@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  inscrit: 1
+  votant: 1
+  abstention: 1
+  blancs: 1
+  nuls: 1
+  blancs_nuls: 1
+  exprime: 1
+  scrutin: one
+  commune: one
+
+two:
+  inscrit: 1
+  votant: 1
+  abstention: 1
+  blancs: 1
+  nuls: 1
+  blancs_nuls: 1
+  exprime: 1
+  scrutin: two
+  commune: two

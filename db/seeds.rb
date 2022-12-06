@@ -993,9 +993,9 @@ end
 
 # ------ 2017 ------
 # ----- T1 -----
-# puts 'creating pdt 2017 T1'
-# resultats_brut = SimpleXlsxReader.open '/Users/lazareboddaert/code/LazareBoddaert/projets-perso/resultats-elections-data/presidentielles/2017/t1/pdt-2017-t1-communes.xlsx'
-# recuperation_donnees_resultats(resultats_brut)
+puts 'creating pdt 2017 T1'
+resultats_brut = SimpleXlsxReader.open '/Users/lazareboddaert/code/LazareBoddaert/projets-perso/resultats-elections-data/presidentielles/2017/t1/pdt-2017-t1-communes.xlsx'
+recuperation_donnees_resultats(resultats_brut)
 
 # ----- T2 -----
 # puts 'creating pdt 2017 T2'
@@ -1006,10 +1006,10 @@ end
 
 # ---------- TEST ----------
 
-p "---TEST---"
+# p "---TEST---"
 
-resultats_test = SimpleXlsxReader.open '/Users/lazareboddaert/code/LazareBoddaert/projets-perso/resultats-elections-data/TEST-resultats-elections.xlsx'
-recuperation_donnees_resultats(resultats_test)
+# resultats_test = SimpleXlsxReader.open '/Users/lazareboddaert/code/LazareBoddaert/projets-perso/resultats-elections-data/TEST-resultats-elections.xlsx'
+# recuperation_donnees_resultats(resultats_test)
 
 # ---------- FIN TEST ----------
 

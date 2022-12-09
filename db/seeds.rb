@@ -874,6 +874,7 @@ def recuperation_donnees_resultats(resultats_brut)
         when 1
           formater_nom_departement(cell)
           if Departement.find_by(nom_formate: @nom_departement_formate).nil?
+            puts "--- Département #{@cell} non trouvé. Ligne #{@row_count} ---"
             case @nom_departement_formate
             when /(corse-sud)/
               @dep_commune = Departement.find(20) # Corse du Sud
@@ -905,6 +906,7 @@ def recuperation_donnees_resultats(resultats_brut)
           end
           @commune_id = @commune.id
         when 3
+          break # Pour seulement vérifier les communes - A SUPPRIMER
           @inscrit = cell
         when 4
           @abstention = cell
@@ -957,7 +959,7 @@ def recuperation_donnees_resultats(resultats_brut)
           when 3
             nom_complet_candidat = "#{cell.capitalize} #{@nom_candidat}"
             if Candidat.find_by(nom: nom_complet_candidat).nil?
-              @candidat = Candidat.create!(nom: nom_complet_candidat, formation_politique_id: nil)
+              @candidat = Candidat.create!(nom: nom_complet_candidat, formation_politique_id: nil) # Formation politique (+ courant) à ajouter
             else
               @candidat = Candidat.find_by(nom: nom_complet_candidat)
             end
@@ -1002,6 +1004,17 @@ recuperation_donnees_resultats(resultats_brut)
 # resultats_brut = SimpleXlsxReader.open '/Users/lazareboddaert/code/LazareBoddaert/projets-perso/resultats-elections-data/presidentielles/2022/t2/presidentielle-2022-T2-par-commune.xlsx'
 # recuperation_donnees_resultats(resultats_brut)
 
+# ------ 2002 ------
+# ----- T1 -----
+# puts 'creating pdt 2002 T1'
+# resultats_brut = SimpleXlsxReader.open '/Users/lazareboddaert/code/LazareBoddaert/projets-perso/resultats-elections-data/presidentielles/2002/t1/pdt-2002-t1-communes.xlsx'
+# recuperation_donnees_resultats(resultats_brut)
+
+# ----- T2 -----
+# puts 'creating pdt 2002 T2'
+# resultats_brut = SimpleXlsxReader.open '/Users/lazareboddaert/code/LazareBoddaert/projets-perso/resultats-elections-data/presidentielles/2002/t2/pdt-2002-t2-communes.xlsx'
+# recuperation_donnees_resultats(resultats_brut)
+
 
 
 # ---------- TEST ----------
@@ -1013,39 +1026,3 @@ recuperation_donnees_resultats(resultats_brut)
 
 # ---------- FIN TEST ----------
 
-
-# ---------- PROBLEME NOM COMMUNE ----------
-#
-# Pianottoli-Caldarello // Pianotolli-Caldarello // creuse
-# La Mazière-aux-Bons-Hommes // La Mazière-aux-Bonshommes // creuse
-# Saint-Julien-Innocence-Eulalie // Saint-Julien-Innocence Eulalie // Dordogne
-# La Bâtie-des-Fonds // La Bâtie-des-Fonts // drôme
-# Moutoux // Moutoux (Le) // jura
-# Rix // Rix-Trebief // jura
-# Larrivière-Saint-Savin // Larrivière // Landes
-# Courcelles-le-Roi // Courcelles // Loiret
-# Ferrières-en-Gâtinais // Ferrières // Loiret
-# Breuil-sur-Vesle // Breuil (!! pas Le Breuil !!) // Marne
-# Arrancy-sur-Crusnes // Arrancy-sur-Crusne // Meurthe-et-Moselle
-# Cléry-le-Grand // Cléry-Grand // Meuse
-# Cléry-le-Petit // Cléry-Petit // Meuse
-# Ile-d'Houat // Ile- d'Houat // Morbihan
-# Saint-Loup-des-Bois // Saint-Loup // Nièvre
-# Aix-en-Pévèle // Aix // Nord
-# Braisnes-sur-Aronde // Braisnes // Oise
-# Pronville-en-Artois // Pronville // Pas-de-Calais
-# Saint-Girons-en-Béarn // Saint-Girons // Pyrénées-Atlantiques
-# Feilluns // Felluns // Pyrénées-Orientales
-# Chessy // Chessy-les-Mines // Rhône
-# Le Rousset-Marizy // Le Rousset - Marizy // Saône-et-Loire
-# Amné // Amné-en-Champagne // Sarthe
-# Douillet // Douillet-le-Joly // Sarthe
-# Fillé // Fillé-sur-Sarthe // Sarthe
-# Rouez // Rouez-en-Champagne // Sarthe
-# Saint Paterne - Le Chevain // Saint Paterne-Le Chevain // Sarthe
-# Fraissines // Frayssines // Tarn
-# Étaule // Etaules // Yonne
-# Limours // Limours en Hurepoix // Essonne
-# Roinville // Roinville-sous-Dourdan // Essonne
-# Périgny // Périgny-sur-Yerres // Val de Marne
-# Hérouville-en-Vexin // Hérouville // Val d'Oise
